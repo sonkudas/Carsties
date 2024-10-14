@@ -9,6 +9,21 @@ services:
       - POSTGRES_PASSWORD=postgrespw
       - POSTGRES_USER=postgress
       - POSTGRES_DB=auctions
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/var/lib/mongodb/data
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongopw
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
 volumes: 
   pgdata:
+  mongodata:
     
